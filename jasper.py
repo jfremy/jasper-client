@@ -89,6 +89,13 @@ class Jasper(object):
         stt_engine_class = stt.get_engine_by_slug(stt_engine_slug)
 
         try:
+            passive_stt_slug = self.config['passive_stt_engine']
+        except KeyError:
+            passive_stt_slug = stt_engine_slug
+
+        passive_stt_engine_class = stt.get_engine_by_slug(passive_stt_slug)
+
+        try:
             tts_engine_slug = self.config['tts_engine']
         except KeyError:
             tts_engine_slug = tts.get_default_engine_slug()
@@ -98,7 +105,7 @@ class Jasper(object):
 
         # Initialize Mic
         self.mic = Mic(tts_engine_class.get_instance(),
-                       stt_engine_class.get_passive_instance(),
+                       passive_stt_engine_class.get_passive_instance(),
                        stt_engine_class.get_active_instance())
 
     def run(self):

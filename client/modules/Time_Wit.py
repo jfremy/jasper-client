@@ -4,7 +4,7 @@ import re
 from client.app_utils import getTimezone
 from semantic.dates import DateService
 
-WORDS = ["TIME"]
+WORDS = []
 
 
 def handle(text, mic, profile):

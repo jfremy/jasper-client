@@ -28,15 +28,15 @@ def handle(text, mic, profile):
                     location = entities['location'][0]['value']
                     break
 
-    locname = "temperature_" + feedname
+    locname = "humidite_" + feedname
 
     if locname in profile['opensense']['feeds']:
         value = opensense.getlatestevent(profile, profile['opensense']['feeds'][locname])
-        mic.say(u'Temperature in %s is %s Celsius' % (location, value))
+        mic.say(u'The humidity in %s is %s%%' % (location, value))
     else:
-        mic.say(u'Unkown location')
+        mic.say(u'Unknown location')
 
 
 
 def isValid(text):
-    return bool(re.search(r'\bdemande_temperature\b', text, re.IGNORECASE))
+    return bool(re.search(r'\bdemande_humidite\b', text, re.IGNORECASE))

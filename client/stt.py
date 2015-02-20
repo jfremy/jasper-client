@@ -536,16 +536,16 @@ class AttSTT(AbstractSTTEngine):
 
 
 class STTString(str):
-    def setConfidence(self, confidence):
+    def setconfidence(self, confidence):
         self._confidence = confidence
 
-    def getConfidence(self):
+    def getconfidence(self):
         return self._confidence
 
-    def setEntities(self, entities):
+    def setentities(self, entities):
         self._entities = entities
 
-    def getEntities(self):
+    def getentities(self):
         return self._entities
 
 
@@ -611,11 +611,11 @@ class WitAiSTT(AbstractSTTEngine):
             if 'outcomes' in result:
                 for outcome in result['outcomes']:
                     intent = STTString(outcome['intent'])
-                    intent.setConfidence(outcome['confidence'])
-                    intent.setEntities(outcome['entities'])
+                    intent.setconfidence(outcome['confidence'])
+                    intent.setentities(outcome['entities'])
                     text.append(intent)
                     self._logger.info('Found intent %s with confidence %f',
-                                      intent, intent.getConfidence())
+                                      intent, intent.getconfidence())
         except requests.exceptions.HTTPError:
             self._logger.critical('Request failed with response: %r',
                                   r.text,

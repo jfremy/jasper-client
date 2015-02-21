@@ -22,7 +22,7 @@ def handle(text, mic, profile):
     now = datetime.datetime.now(tz=tz)
     service = DateService()
     response = service.convertTime(now)
-    mic.say("Il est %s." % response)
+    mic.say("It is %s right now." % response)
 
 
 def isValid(text):

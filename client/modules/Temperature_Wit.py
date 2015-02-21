@@ -16,9 +16,7 @@ def handle(text, mic, profile):
     location = 'balcon'
     feedname = 'balcon'
     if hasattr(text, "getentities"):
-        print "has getentities"
         entities = text.getentities()
-        print entities
         if 'location' in entities:
             for (feed, regex) in LOCATIONS:
                 print "trying " + feed

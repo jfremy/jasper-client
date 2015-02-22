@@ -88,15 +88,15 @@ def handle(text, mic, profile):
                     if nextStops[0]["waitingTimeRaw"] == "SERVICE TERMINE":
                         mic.say("%s service for line %s is finished for today" % (transport["text"], line["text"]))
                     else:
-                        mic.say("Next %s stop for line %s to %s is in %s" % (transport["text"], line["text"], direction["text"], nextStops[0]["waitingTimeRaw"].replace("mn", "minutes")))
+                        mic.say("Next %s for line %s to %s is in %s" % (transport["text"], line["text"], direction["text"], nextStops[0]["waitingTimeRaw"].replace("mn", "minutes")))
                 if lenstops >= 2:
                     if nextStops[0]["waitingTimeRaw"] == "SERVICE TERMINE":
                         mic.say("%s service for line %s to %s is finished for today" % (transport["text"], line["text"], direction["text"]))
                     else:
                         if nextStops[0]["waitingTimeRaw"] == "A l'approche":
-                            mic.say("Next %s stop for line %s to %s is in %s" % (transport["text"], line["text"], direction["text"], nextStops[1]["waitingTimeRaw"].replace("mn", "minutes")))
+                            mic.say("Next %s for line %s to %s is in %s" % (transport["text"], line["text"], direction["text"], nextStops[1]["waitingTimeRaw"].replace("mn", "minutes")))
                         else:
-                            mic.say("Next %s stop for line %s to %s is in %s and the following is in %s" % (transport["text"], line["text"], direction["text"], nextStops[0]["waitingTimeRaw"].replace("mn", "minutes"), nextStops[1]["waitingTimeRaw"].replace("mn", "minutes")))
+                            mic.say("Next %s for line %s to %s is in %s and the following is in %s" % (transport["text"], line["text"], direction["text"], nextStops[0]["waitingTimeRaw"].replace("mn", "minutes"), nextStops[1]["waitingTimeRaw"].replace("mn", "minutes")))
         except requests.exceptions.HTTPError as he:
             print "HTTPError ", he
         except requests.exceptions.RequestException as rex:
